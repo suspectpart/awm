@@ -1,7 +1,7 @@
 # awm - Another Window Manager
 Implementing a basic Window Manager in Rust.
 
-## Prerequistes
+## Prerequisites
 
 Install Rust and the Cargo build system:
 
