@@ -4,7 +4,7 @@ Implementing a basic Window Manager in Rust. This is just a fun project for expe
 
 ## Prerequisites
 
-Install *Rust* and the *Cargo* build system:
+Install **Rust** and the **Cargo** build system:
 
 `sh
 $ curl -sSf https://static.rust-lang.org/rustup.sh | sh
