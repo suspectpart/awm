@@ -1,5 +1,6 @@
 # awm - Another Window Manager
-Implementing a basic Window Manager in Rust.
+
+Implementing a basic Window Manager in Rust. This is just a fun project for experimenting purposes. There is no guarantee that this won't fuck up your system in any bad way imaginable, as I don't know anything about Window Managers and Rust at all. Have fun!
 
 ## Prerequisites
 
@@ -9,7 +10,7 @@ Install *Rust* and the *Cargo* build system:
 $ curl -sSf https://static.rust-lang.org/rustup.sh | sh
 `
 
-Install the Xephyr server as a test environment for the Window Manager (assuming Arch with **pacman**):
+Install the **Xephyr** server as a test XServer for the Window Manager (assuming Arch with **pacman**):
 
 `sh
 $ sudo pacman -Su xorg-server-xephyr
@@ -17,7 +18,7 @@ $ sudo pacman -Su xorg-server-xephyr
 
 ## How to build
 
-Clone the repository and use cargo to build:
+Clone this repository and use cargo to build:
 
 ```sh
 $ git clone git@github.com:suspectpart/awm 
