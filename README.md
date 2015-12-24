@@ -17,8 +17,10 @@ Clone the repository and use cargo to build:
 $ git clone git@github.com:suspectpart/awm 
 $ cd awm 
 $ cargo build 
+`
 
 Execute the result: 
 
+`
 $ ./target/debug/awm  
 `
