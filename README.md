@@ -28,14 +28,14 @@ $ cargo build
 
 ## How to run: 
 
-- First, we start the Xephyr server with a DISPLAY of **:42**, running as a background job:
+First, we start the Xephyr server with a DISPLAY of **:42**, running as a background job:
 
 ```sh
 $ Xephyr :42 &  
 ```
 
-- Then, we run our app, connecting to that display by setting the $DISPLAY environment variable:
-- 
+Then, we run our app, connecting to that display by setting the $DISPLAY environment variable:
+ 
 ```sh
 $ DISPLAY=:42 ./target/debug/awm &
 ```
