@@ -1,0 +1,14 @@
+[project]
+name = "Another Window Manager"
+version = "0.0.1"
+authors = ["Horst Schneider"]
+
+[dependencies.xlib]
+git = "https://github.com/Kintaro/rust-xlib.git"
+branch = "class_hint"
+
+[dependencies.xinerama]
+git = "https://github.com/Kintaro/rust-xinerama.git"
+
+[[bin]]
+name = "awm"
