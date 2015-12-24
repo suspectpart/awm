@@ -1,5 +1,5 @@
 use std::ptr;
-use xlib::{ Display, Window, Screen };
+use xlib::{ Display, Window };
 use xlib::{ XOpenDisplay, XDefaultScreenOfDisplay, XRootWindowOfScreen };
 
 pub struct WindowSystem {
