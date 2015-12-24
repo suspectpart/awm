@@ -13,14 +13,14 @@ $ curl -sSf https://static.rust-lang.org/rustup.sh | sh
 
 Clone the repository and use cargo to build:
 
-`
+```bash
 $ git clone git@github.com:suspectpart/awm 
 $ cd awm 
 $ cargo build 
-`
+```
 
 Execute the result: 
 
-`
+```bash
 $ ./target/debug/awm  
-`
+```
