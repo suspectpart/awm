@@ -11,8 +11,8 @@ fn main() {
     let window_system = WindowSystem::new();
 
     unsafe {
-        let border = XBlackPixel(window_system.display, XDefaultScreen(window_system.display));
-        let background = XWhitePixel(window_system.display, XDefaultScreen(window_system.display));
+        let border = XWhitePixel(window_system.display, XDefaultScreen(window_system.display));
+        let background = XBlackPixel(window_system.display, XDefaultScreen(window_system.display));
         let x = 50;
         let y = 50;
         let width = 100;
