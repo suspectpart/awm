@@ -1,6 +1,14 @@
 # awm - Another Window Manager
 
-Implementing a basic Window Manager in Rust. This is just a fun project for experimenting purposes. There is no guarantee that this won't fuck up your system in any bad way imaginable, as I don't know anything about Window Managers and Rust at all. Have fun!
+Implementing a basic Window Manager in Rust. This is just a fun project for experimenting purposes. There is no guarantee that this won't fuck up your system in any bad way imaginable, as I don't know anything about Window Managers and Rust at all. 
+
+I got the basic idea and setup from this article: [A Window Manager in Rust](http://kintaro.github.io/rust/window-manager-in-rust-01/)
+
+I kind of translated some C-Code to Rust to make the basic example work: [Window creation/X11 ](http://rosettacode.org/wiki/Window_creation/X11#Xlib)
+
+The XServer calls are realized with rust-xlib: [rust-xlib](https://github.com/servo/rust-xlib/)  
+
+Have fun!
 
 ## Prerequisites
 
