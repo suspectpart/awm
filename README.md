@@ -6,15 +6,15 @@ Implementing a basic Window Manager in Rust. This is just a fun project for expe
 
 Install **Rust** and the **Cargo** build system:
 
-`sh
+```sh
 $ curl -sSf https://static.rust-lang.org/rustup.sh | sh
-`
+```
 
 Install the **Xephyr** server as a test XServer for the Window Manager (assuming Arch with **pacman**):
 
-`sh
+```sh
 $ sudo pacman -Su xorg-server-xephyr
-`
+```
 
 ## How to build
 
