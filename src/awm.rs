@@ -1,6 +1,5 @@
 extern crate libc;
 extern crate xlib;
-extern crate xinerama;
 
 use xlib::*;
 use window_system::WindowSystem;

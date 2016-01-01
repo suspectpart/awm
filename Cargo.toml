@@ -6,9 +6,6 @@ authors = ["Horst Schneider"]
 [dependencies.xlib]
 git = "https://github.com/servo/rust-xlib.git"
 
-[dependencies.xinerama]
-git = "https://github.com/Kintaro/rust-xinerama.git"
-
 [dependencies.libc]
 libc = "*"
 
