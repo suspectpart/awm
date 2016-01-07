@@ -13,3 +13,5 @@
 # Others
 /doc
 Cargo.lock
+*.swp
+*.log

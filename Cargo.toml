@@ -7,7 +7,10 @@ authors = ["Horst Schneider"]
 git = "https://github.com/servo/rust-xlib.git"
 
 [dependencies.libc]
-libc = "*"
+libc="*"
+
+[dependencies]
+bitflags = "0.2"
 
 [[bin]]
 name = "awm"
