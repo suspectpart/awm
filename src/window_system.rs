@@ -1,6 +1,5 @@
 use std::ptr;
-use xlib::{ Display, Window };
-use xlib::{ XOpenDisplay, XDefaultScreenOfDisplay, XRootWindowOfScreen };
+use x11::xlib::*;
 
 pub struct WindowSystem {
     pub display:  *mut Display,
@@ -14,7 +13,7 @@ impl WindowSystem {
             let screen = XDefaultScreenOfDisplay(display);
             let root = XRootWindowOfScreen(screen);
 
-            WindowSystem {
+            WindowSystem{
                 display: display,
                 root: root,
             }

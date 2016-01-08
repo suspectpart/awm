@@ -1,12 +1,12 @@
 extern crate libc;
-extern crate xlib;
+extern crate x11;
 
 mod handlers;
 mod window_system;
 mod events;
 
 use window_system::WindowSystem;
-use xlib::*;
+use x11::xlib::*;
 
 
 fn main() {
@@ -39,16 +39,16 @@ fn main() {
         XMapWindow(window_system.display, window);
     }
 
-    let mut e = XEvent { _type : 0, pad: [0;24] };
+    let mut e = XEvent { pad: [0;24] };
     
     loop {
         unsafe {
             XNextEvent(window_system.display, &mut e);
 
-            match e._type {
+            match e.get_type() {
                 events::Expose => println!("Expose"),
                 events::KeyPress => println!("KeyPress"),
-                events::MapRequest => println!("MapRequest"),
+                events::MapRequest => handlers::MapRequestHandler::new().handle(&mut e, &window_system),
                 events::CreateNotify => println!("CreateNotify"),
                 events::ReparentNotify => println!("Reparent"),
                 _ => println!("Unknown Event"),

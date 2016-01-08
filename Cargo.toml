@@ -3,14 +3,15 @@ name = "Another Window Manager"
 version = "0.0.1"
 authors = ["Horst Schneider"]
 
-[dependencies.xlib]
-git = "https://github.com/servo/rust-xlib.git"
+#[dependencies.xlib]
+#git = "https://github.com/servo/rust-xlib.git"
 
 [dependencies.libc]
 libc="*"
 
 [dependencies]
 bitflags = "0.2"
+x11 = { version = "*", features = ["xlib", "xinerama"] }
 
 [[bin]]
 name = "awm"
