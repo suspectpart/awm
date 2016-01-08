@@ -1,10 +1,13 @@
 extern crate libc;
 extern crate xlib;
 
+mod handlers;
+mod window_system;
+mod events;
+
 use window_system::WindowSystem;
 use xlib::*;
 
-mod window_system;
 
 fn main() {
     let window_system = WindowSystem::new();
@@ -20,8 +23,19 @@ fn main() {
         let width = 100;
         let height = 100;
         let border_width = 10;
-        let window = XCreateSimpleWindow(window_system.display, window_system.root, x,y, width, height,border_width, border,background);
-        XSelectInput(window_system.display, window_system.root, substructure_notify_mask  | substructure_redirect_mask);
+        let window = XCreateSimpleWindow(window_system.display, 
+                                         window_system.root, 
+                                         x, 
+                                         y, 
+                                         width, 
+                                         height,
+                                         border_width, 
+                                         border,background);
+
+        XSelectInput(window_system.display, 
+                     window_system.root, 
+                     substructure_notify_mask  | substructure_redirect_mask);
+        
         XMapWindow(window_system.display, window);
     }
 
@@ -31,20 +45,13 @@ fn main() {
         unsafe {
             XNextEvent(window_system.display, &mut e);
 
-            if e._type == Expose {
-                println!("something got exposed");
-            }
-            if e._type == KeyPress {
-                println!("Key Pressed");
-            }
-            if e._type == CreateNotify {
-                println!("CreateNotify");
-            }
-            if e._type == MapRequest {
-                println!("Map Request");
-            }
-            if e._type == ReparentNotify {
-                println!("Reparent");
+            match e._type {
+                events::Expose => println!("Expose"),
+                events::KeyPress => println!("KeyPress"),
+                events::MapRequest => println!("MapRequest"),
+                events::CreateNotify => println!("CreateNotify"),
+                events::ReparentNotify => println!("Reparent"),
+                _ => println!("Unknown Event"),
             }
         }
     }
