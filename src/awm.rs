@@ -6,7 +6,7 @@ mod window_system;
 mod events;
 
 use window_system::WindowSystem;
-use x11::xlib::*;
+use x11::xlib;
 
 
 fn main() {
@@ -16,14 +16,14 @@ fn main() {
     let substructure_redirect_mask = 0x1 << 20;
 
     unsafe {
-        let border = XWhitePixel(window_system.display, XDefaultScreen(window_system.display));
-        let background = XBlackPixel(window_system.display, XDefaultScreen(window_system.display));
+        let border = xlib::XWhitePixel(window_system.display, xlib::XDefaultScreen(window_system.display));
+        let background = xlib::XBlackPixel(window_system.display, xlib::XDefaultScreen(window_system.display));
         let x = 50;
         let y = 50;
         let width = 100;
         let height = 100;
         let border_width = 10;
-        let window = XCreateSimpleWindow(window_system.display, 
+        let window = xlib::XCreateSimpleWindow(window_system.display, 
                                          window_system.root, 
                                          x, 
                                          y, 
@@ -32,23 +32,23 @@ fn main() {
                                          border_width, 
                                          border,background);
 
-        XSelectInput(window_system.display, 
+        xlib::XSelectInput(window_system.display, 
                      window_system.root, 
                      substructure_notify_mask  | substructure_redirect_mask);
         
-        XMapWindow(window_system.display, window);
+        xlib::XMapWindow(window_system.display, window);
     }
 
-    let mut e = XEvent { pad: [0;24] };
+    let mut e = xlib::XEvent { pad: [0;24] };
     
     loop {
         unsafe {
-            XNextEvent(window_system.display, &mut e);
-
+            xlib::XNextEvent(window_system.display, &mut e);
+            let test: xlib::XMapRequestEvent = xlib::XMapRequestEvent::from(e);
             match e.get_type() {
                 events::Expose => println!("Expose"),
                 events::KeyPress => println!("KeyPress"),
-                events::MapRequest => handlers::MapRequestHandler::new().handle(&mut e, &window_system),
+                events::MapRequest => handlers::MapRequestHandler::new().handle(test, &window_system),
                 events::CreateNotify => println!("CreateNotify"),
                 events::ReparentNotify => println!("Reparent"),
                 _ => println!("Unknown Event"),
