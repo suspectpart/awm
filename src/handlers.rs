@@ -39,16 +39,22 @@ impl MapRequestHandler {
 
     pub fn handle(&self, event: xlib::XEvent, window_system: &WindowSystem) {
         let event = xlib::XMapRequestEvent::from(event);
-       
+      
+        // create frame as a new parent for the window to be mapped
         let frame = create_some_window(window_system);
         unsafe {
+            // resize window to fit parent
             xlib::XResizeWindow(window_system.display, event.window, 500,300);
+
+            // make frame window parent of window to be mapped
             xlib::XReparentWindow(window_system.display, event.window, frame, 0, 0);
+
+            // show frame
             xlib::XMapWindow(window_system.display, frame); 
+
+            // show window inside frame
             xlib::XMapWindow(window_system.display, event.window);
         }
-
-        println!("Handling MapRequest");
     }
 }
 
