@@ -3,7 +3,6 @@ extern crate x11;
 
 mod handlers;
 mod window_system;
-mod events;
 
 use window_system::WindowSystem;
 use x11::xlib;
@@ -46,11 +45,11 @@ fn main() {
             xlib::XNextEvent(window_system.display, &mut e);
             let test: xlib::XMapRequestEvent = xlib::XMapRequestEvent::from(e);
             match e.get_type() {
-                events::Expose => println!("Expose"),
-                events::KeyPress => println!("KeyPress"),
-                events::MapRequest => handlers::MapRequestHandler::new().handle(test, &window_system),
-                events::CreateNotify => println!("CreateNotify"),
-                events::ReparentNotify => println!("Reparent"),
+                xlib::Expose => println!("Expose"),
+                xlib::KeyPress => println!("KeyPress"),
+                xlib::MapRequest => handlers::MapRequestHandler::new().handle(test, &window_system),
+                xlib::CreateNotify => println!("CreateNotify"),
+                xlib::ReparentNotify => println!("Reparent"),
                 _ => println!("Unknown Event"),
             }
         }

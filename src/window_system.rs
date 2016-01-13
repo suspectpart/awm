@@ -2,7 +2,7 @@ use std::ptr;
 use x11::xlib::*;
 
 pub struct WindowSystem {
-    pub display:  *mut Display,
+    pub display: *mut Display,
     pub root: Window,
 }
 
