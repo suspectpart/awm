@@ -1,14 +1,8 @@
 use x11::xlib;
 use window_system::WindowSystem;
 
-pub struct KeyPressHandler; 
+pub struct KeyPressedHandler; 
 pub struct MapRequestHandler;
-
-impl KeyPressHandler {
-    pub fn new() -> KeyPressHandler {
-        return KeyPressHandler;
-    }
-}
 
 impl MapRequestHandler {
     pub fn new() -> MapRequestHandler {
@@ -20,5 +14,15 @@ impl MapRequestHandler {
             xlib::XMapWindow(window_system.display,e.window);   
         }
         println!("Handling MapRequest");
+    }
+}
+
+impl KeyPressedHandler {
+    pub fn new() -> KeyPressedHandler {
+        return KeyPressedHandler;
+    }
+
+    pub fn handle(&self) {
+        println!("KeyPressed");
     }
 }
