@@ -9,10 +9,13 @@ impl MapRequestHandler {
         return MapRequestHandler;
     }
 
-    pub fn handle(&self, e: xlib::XMapRequestEvent, window_system: &WindowSystem) {
+    pub fn handle(&self, event: xlib::XEvent, window_system: &WindowSystem) {
+        let event = xlib::XMapRequestEvent::from(event);
+        
         unsafe {
-            xlib::XMapWindow(window_system.display,e.window);   
+            xlib::XMapWindow(window_system.display, event.window); 
         }
+
         println!("Handling MapRequest");
     }
 }
@@ -22,7 +25,8 @@ impl KeyPressedHandler {
         return KeyPressedHandler;
     }
 
-    pub fn handle(&self) {
-        println!("KeyPressed");
+    pub fn handle(&self, event: xlib::XEvent) {
+        let event = xlib::XKeyPressedEvent::from(event);
+        println!("KeyPressed {}", event.keycode);
     }
 }

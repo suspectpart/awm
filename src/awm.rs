@@ -37,16 +37,16 @@ fn main() {
         XMapWindow(window_system.display, window);
     }
 
-    let mut e = XEvent { pad: [0;24] };
+    let mut event = XEvent { pad: [0;24] };
     
     loop {
         unsafe {
-            XNextEvent(window_system.display, &mut e);
-            let test: XMapRequestEvent = XMapRequestEvent::from(e);
-            match e.get_type() {
+            XNextEvent(window_system.display, &mut event);
+
+            match event.get_type() {
                 Expose => println!("Expose"),
-                KeyPress => handlers::KeyPressedHandler::new().handle(),
-                MapRequest => handlers::MapRequestHandler::new().handle(test, &window_system),
+                KeyPress => handlers::KeyPressedHandler::new().handle(event),
+                MapRequest => handlers::MapRequestHandler::new().handle(event, &window_system),
                 CreateNotify => println!("CreateNotify"),
                 ReparentNotify => println!("Reparent"),
                 _ => println!("Unknown Event"),
